@@ -1,0 +1,25 @@
+extend type Query {
+    user: User! @isAuthenticated
+    users: [User!]! @isAuthenticated
+}
+
+extend type Mutation {
+    logout: Boolean! @isAuthenticated
+}
+
+extend type Subscription {
+    userAdded: User!
+}
+
+interface BaseUser {
+    id: UUID!
+    username: String!
+    color: String!
+}
+
+type User implements BaseUser {
+    id: UUID!
+    username: String!
+    color: String!
+    createdAt: Time!
+}

@@ -1,0 +1,29 @@
+extend type Query {
+    messages: [Message]! @isAuthenticated
+}
+
+extend type Mutation {
+    sendMessage(input: SendMessageInput!): Boolean! @isAuthenticated
+}
+
+extend type Subscription {
+    messageAdded: Message!
+}
+
+type MessageUser implements BaseUser {
+    id: UUID!
+    username: String!
+    color: String!
+}
+
+type Message {
+    id: UUID!
+    userId: UUID!
+    user: MessageUser! @goField(forceResolver: true)
+    text: String!
+    createdAt: Time!
+}
+
+input SendMessageInput {
+    text: String!
+}

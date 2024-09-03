@@ -1,0 +1,9 @@
+http:
+  port: 8000
+db:
+  postgres:
+    url: postgres://postgres:postgres@postgres:5432/chat?sslmode=disable
+nats:
+  addr: nats://nats:4222
+session:
+  secret: chat
